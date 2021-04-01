@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import Head from "next/head";
 import { Button } from "@material-ui/core";
+import { auth, provider } from "../firebase";
 
 function Login() {
+  const signIn = () => {
+    auth.signInWithPopup(provider).catch(alert);
+  };
   return (
     <div>
       <Container>
@@ -12,7 +16,9 @@ function Login() {
 
         <LoginContainer>
           <Logo src="https://icons-for-free.com/iconfiles/png/512/chat+icon-1320184411998302345.png" />
-          <Button variant="outlined">Sign in with Google</Button>
+          <Button onClick={signIn} variant="outlined">
+            Sign in with Google
+          </Button>
         </LoginContainer>
       </Container>
     </div>
@@ -28,10 +34,12 @@ const Container = styled.div`
 `;
 
 const LoginContainer = styled.div`
+  padding: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
+  border-radius: 5px;
 `;
 
 const Logo = styled.img`
