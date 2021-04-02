@@ -3,15 +3,27 @@ import styled from "styled-components";
 import getRecipientEmail from "../utils/getRecipientEmail";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../firebase";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 function Chat({ id, users }) {
   const [user] = useAuthState(auth);
+  const [recipientSnapchat] = useCollection(
+    db.collection("users").where("email", "==", getRecipientEmail(users, user))
+  );
 
+  console.log(recipientSnapchat);
+
+  const recipient = recipientSnapchat?.docs?.[0]?.data();
   const recipientEmail = getRecipientEmail(users, user);
 
   return (
     <Container>
-      <UserAvatar />
+      {recipient ? (
+        <UserAvatar src={recipient?.photoURL} />
+      ) : (
+        <UserAvatar src={recipientEmail[0]} />
+      )}
+
       <p>{recipientEmail}</p>
     </Container>
   );

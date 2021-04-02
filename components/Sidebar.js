@@ -24,8 +24,9 @@ function Sidebar() {
 
     if (!input) return null;
 
+    console.log(EmailValidator.validate(input));
     if (
-      EmailValidator.validate(input) &&
+      // EmailValidator.validate(input) &&
       !chatAlreadyExists(input) &&
       input !== user.email
     ) {
@@ -39,13 +40,13 @@ function Sidebar() {
   const chatAlreadyExists = (recipientEmail) =>
     !!chatsSnapshop?.docs.find(
       (chat) =>
-        chat.data().users.find((user) => user === recipientEmail)?.lenght > 0
+        chat.data().users.find((user) => user === recipientEmail)?.length > 0
     );
 
   return (
     <Container>
       <Header>
-        <UserAvatar onClick={() => auth.signOut()} />
+        <UserAvatar src={user.photoURL} onClick={() => auth.signOut()} />
         <IconsContainer>
           <IconButton>
             <ChatIcon />

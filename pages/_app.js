@@ -7,6 +7,7 @@ import firebase from "firebase";
 import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
+  // const [user, loading, error] = useAuthState(auth);
   const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
