@@ -4,20 +4,24 @@ import getRecipientEmail from "../utils/getRecipientEmail";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { useRouter } from "next/router";
 
 function Chat({ id, users }) {
+  const router = useRouter();
   const [user] = useAuthState(auth);
   const [recipientSnapchat] = useCollection(
     db.collection("users").where("email", "==", getRecipientEmail(users, user))
   );
 
-  console.log(recipientSnapchat);
+  const enterChat = () => {
+    router.push(`/chat/${id}`);
+  };
 
   const recipient = recipientSnapchat?.docs?.[0]?.data();
   const recipientEmail = getRecipientEmail(users, user);
 
   return (
-    <Container>
+    <Container onClick={enterChat}>
       {recipient ? (
         <UserAvatar src={recipient?.photoURL} />
       ) : (
