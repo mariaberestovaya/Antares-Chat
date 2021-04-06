@@ -10,4 +10,11 @@ function Message({ user, message }) {
 
 export default Message;
 
-const Container = styled.div``;
+const Container = styled.div`
+  /* > p {
+    border-radius: 5px;
+    width: auto;
+    padding: 10px;
+    background-color: #fff;
+  } */
+`;
