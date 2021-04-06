@@ -17,38 +17,38 @@ function ChatScreen({ chat, messages }) {
   const [user] = useAuthState(auth);
   const [input, setInput] = useState("");
   const router = useRouter();
-  // const [messagesSnapchat] = useCollection(
-  //   db
-  //     .collection("chats")
-  //     .doc(router.query.id)
-  //     .collection("messages")
-  //     .orderBy("timestamp", "asc")
-  // );
+  const [messagesSnapchat] = useCollection(
+    db
+      .collection("chats")
+      .doc(router.query.id)
+      .collection("messages")
+      .orderBy("timestamp", "asc")
+  );
 
-  // const showMessages = () => {
-  //   if (messagesSnapchat) {
-  //     return messagesSnapchat.docs.map((message) => (
-  //       <Message
-  //         key={message.id}
-  //         user={message.data().user}
-  //         message={{
-  //           ...message.data(),
-  //           timestamp: message.data().timestamp?.toDate().getTime(),
-  //         }}
-  //       />
-  //     ));
-  //   }
-  // };
+  const showMessages = () => {
+    if (messagesSnapchat) {
+      return messagesSnapchat.docs.map((message) => (
+        <Message
+          key={message.id}
+          user={message.data().user}
+          message={{
+            ...message.data(),
+            timestamp: message.data().timestamp?.toDate().getTime(),
+          }}
+        />
+      ));
+    }
+  };
 
   const sendMessage = (e) => {
     e.preventDefault();
 
-    // db.collection("users").doc(user.uid).set(
-    //   {
-    //     lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
-    //   },
-    //   { merge: true }
-    // );
+    db.collection("users").doc(user.uid).set(
+      {
+        lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
+      },
+      { merge: true }
+    );
 
     db.collection("chats").doc(router.query.id).collection("messages").add({
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -82,7 +82,7 @@ function ChatScreen({ chat, messages }) {
       </Header>
 
       <MessageContainer>
-        {/* {showMessages()} */}
+        {showMessages()}
         <EndOfMessage />
       </MessageContainer>
 

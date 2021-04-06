@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
   // PREP the messages on the server
   const messagesRef = await ref
     .collection("messages")
-    .orderBy("timestamp", "ast")
+    .orderBy("timestamp", "asc")
     .get();
 
   const messages = messagesRef.docs
@@ -49,8 +49,6 @@ export async function getServerSideProps(context) {
     id: chatRes.id,
     ...chatRes.data(),
   };
-
-  console.log(chat, messages);
 
   return {
     props: {
