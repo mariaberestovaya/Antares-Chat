@@ -39,7 +39,7 @@ const Timestamp = styled.div``;
 
 const Sender = styled(MessageElement)`
   margin-left: auto;
-  background-color: yellow;
+  background-color: #b0b0b0;
 `;
 
 const Reciever = styled(MessageElement)`

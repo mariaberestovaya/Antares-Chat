@@ -144,7 +144,6 @@ export default ChatScreen;
 
 const Container = styled.div`
   height: 100vh;
-  width: 100%;
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
@@ -214,6 +213,5 @@ const HeaderIcons = styled.div``;
 
 const MessageContainer = styled.div`
   padding: 30px;
-  background-color: #749bff;
   min-height: 90vh;
 `;

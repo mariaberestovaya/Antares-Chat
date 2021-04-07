@@ -44,8 +44,9 @@ const Container = styled.div`
   padding: 15px;
   word-break: break-word;
 
+  transition: all 0.25s ease-in;
   :hover {
-    background-color: whitesmoke;
+    background-color: #b0b0b0;
   }
 `;
 
