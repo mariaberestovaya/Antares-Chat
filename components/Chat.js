@@ -20,6 +20,8 @@ function Chat({ id, users }) {
   const recipient = recipientSnapchat?.docs?.[0]?.data();
   const recipientEmail = getRecipientEmail(users, user);
 
+  const emailText = recipientEmail.split("@")[0];
+
   return (
     <Container onClick={enterChat}>
       {recipient ? (
@@ -28,7 +30,7 @@ function Chat({ id, users }) {
         <UserAvatar src={recipientEmail[0]} />
       )}
 
-      <p>{recipientEmail}</p>
+      <p>{emailText}</p>
     </Container>
   );
 }

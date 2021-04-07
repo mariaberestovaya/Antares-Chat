@@ -87,6 +87,8 @@ function ChatScreen({ chat, messages }) {
   const recipient = recipientSnapshot?.docs?.[0].data();
   const recipientEmail = getRecipientEmail(chat.users, user);
 
+  const emailText = recipientEmail.split("@")[0];
+
   return (
     <Container>
       <Header>
@@ -97,7 +99,7 @@ function ChatScreen({ chat, messages }) {
         )}
 
         <HeaderInformation>
-          <h3>{recipientEmail}</h3>
+          <h3>{emailText}</h3>
           {recipientSnapshot ? (
             <p>
               Last active:{" "}
@@ -113,10 +115,10 @@ function ChatScreen({ chat, messages }) {
         </HeaderInformation>
         <HeaderIcons>
           <IconButton>
-            <AttachFileIcon />
+            <AttachFileIcon style={{ color: "#000" }} />
           </IconButton>
           <IconButton>
-            <MoreVertIcon />
+            <MoreVertIcon style={{ color: "#000" }} />
           </IconButton>
         </HeaderIcons>
       </Header>
@@ -140,7 +142,19 @@ function ChatScreen({ chat, messages }) {
 
 export default ChatScreen;
 
-const Container = styled.div``;
+const Container = styled.div`
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+
+  scrollbar-width: none;
+`;
 
 const Input = styled.input`
   flex: 1;
@@ -173,7 +187,6 @@ const Header = styled.div`
   display: flex;
   padding: 11px;
   height: 80px;
-  width: 600px;
   align-items: center;
   border-bottom: 1px solid whitesmoke;
 `;
@@ -183,12 +196,13 @@ const HeaderInformation = styled.div`
   flex: 2;
 
   > h3 {
-    margin-bottom: 3px;
+    margin: 0;
   }
 
   > p {
     font-size: 14px;
     color: gray;
+    margin: 0;
   }
 `;
 
