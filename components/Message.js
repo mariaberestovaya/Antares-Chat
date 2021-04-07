@@ -12,9 +12,9 @@ function Message({ user, message }) {
     <Container>
       <TypeOfMessage>
         {message.message}
-        {/* <Timestamp> */}
-        {message.timestamp ? moment(message.timestamp).format("LT") : "..."}
-        {/* </Timestamp> */}
+        <Timestamp>
+          {message.timestamp ? moment(message.timestamp).format("LT") : "..."}
+        </Timestamp>
       </TypeOfMessage>
     </Container>
   );
@@ -35,9 +35,11 @@ const MessageElement = styled.p`
   text-align: right;
 `;
 
+const Timestamp = styled.div``;
+
 const Sender = styled(MessageElement)`
   margin-left: auto;
-  background-color: #222;
+  background-color: yellow;
 `;
 
 const Reciever = styled(MessageElement)`

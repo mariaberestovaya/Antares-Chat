@@ -1,6 +1,5 @@
-import styled from "styled-components";
 import Head from "next/head";
-import { Button } from "@material-ui/core";
+import styled from "styled-components";
 import { auth, provider } from "../firebase";
 
 function Login() {
@@ -8,20 +7,21 @@ function Login() {
     auth.signInWithPopup(provider).catch(alert);
   };
   return (
-    <div>
-      <Container>
-        <Head>
-          <title>Login</title>
-        </Head>
+    <Container>
+      <Head>
+        <title>Log In</title>
+      </Head>
 
-        <LoginContainer>
-          <Logo src="https://icons-for-free.com/iconfiles/png/512/chat+icon-1320184411998302345.png" />
-          <Button onClick={signIn} variant="outlined">
-            Sign in with Google
-          </Button>
-        </LoginContainer>
-      </Container>
-    </div>
+      <LoginContainer>
+        <h2>Welcome to</h2>
+        <h1>
+          <Logo src="/icon.png" />
+          Antares Chat
+        </h1>
+
+        <Button onClick={signIn}>Sign in with Google</Button>
+      </LoginContainer>
+    </Container>
   );
 }
 
@@ -33,6 +33,14 @@ const Container = styled.div`
   height: 100vh;
 `;
 
+const Logo = styled.img`
+  height: 70px;
+
+  @media (max-width: 643px) {
+    height: 40px;
+  }
+`;
+
 const LoginContainer = styled.div`
   padding: 100px;
   display: flex;
@@ -40,10 +48,57 @@ const LoginContainer = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 5px;
+
+  @media (max-width: 643px) {
+    padding: 0;
+  }
+
+  > h1 {
+    font-size: 4rem;
+    margin: 0 0 40px 0;
+
+    @media (max-width: 643px) {
+      font-size: 3em;
+      margin: 0 0 20px 0;
+    }
+
+    @media (max-width: 322px) {
+      font-size: 2em;
+    }
+  }
+
+  > h2 {
+    font-size: 2rem;
+    margin: 0;
+
+    @media (max-width: 643px) {
+      font-size: 2em;
+    }
+
+    @media (max-width: 322px) {
+      font-size: 1.6em;
+    }
+  }
 `;
 
-const Logo = styled.img`
-  height: 200px;
-  width: 200px;
-  margin-bottom: 50px;
+const Button = styled.button`
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa80VaEqxezGIMWnxtuw6jrsMoiYyuswvz5A&usqp=CAU");
+
+  padding: 20px 40px;
+  color: #fff;
+  border: none;
+  outline: 0;
+  border-radius: 5px;
+  font-size: 1.2em;
+
+  transition: all 0.25s ease-in;
+
+  :hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 643px) {
+    font-size: 1em;
+    padding: 20px 30px;
+  }
 `;

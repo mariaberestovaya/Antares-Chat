@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { Avatar, IconButton, Button } from "@material-ui/core";
-import ChatIcon from "@material-ui/icons/Chat";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import SearchIcon from "@material-ui/icons/Search";
 import * as EmailValidator from "email-validator";
 import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Chat from "../components/Chat";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 function Sidebar() {
   const [user] = useAuthState(auth);
@@ -43,29 +41,21 @@ function Sidebar() {
         chat.data().users.find((user) => user === recipientEmail)?.length > 0
     );
 
+  const emailText = user.email.split("@")[0];
+
   return (
     <Container>
       <Header>
-        <UserAvatar src={user.photoURL} onClick={() => auth.signOut()} />
+        <UserInfoGroup>
+          <UserAvatar src={user.photoURL} onClick={() => auth.signOut()} />
+          <p>{emailText}</p>
+        </UserInfoGroup>
         <IconsContainer>
           <IconButton>
-            <ChatIcon />
-          </IconButton>
-
-          <IconButton>
-            <MoreVertIcon />
+            <PersonAddIcon fontSize="large" onClick={createChat} />
           </IconButton>
         </IconsContainer>
       </Header>
-
-      <Search>
-        <SearchIcon />
-        <SearchInput placeholder="Search in chats" />
-      </Search>
-
-      <SidebarButton onClick={createChat} variant="contained" color="primary">
-        Start
-      </SidebarButton>
 
       {/* List of Chats */}
       {chatsSnapshop?.docs.map((chat) => (
@@ -85,7 +75,7 @@ const Container = styled.div`
   max-width: 350px;
   overflow-y: scroll;
 
-  ::-webkit-scrollbar {
+f  ::-webkit-scrollbar {
     display: none;
   }
 
@@ -94,33 +84,16 @@ const Container = styled.div`
   scrollbar-width: none; /* Firefox */
 `;
 
-const Search = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-radius: 2px;
-`;
-
-const SidebarButton = styled(Button)`
-  width: 100%;
-`;
-
-const SearchInput = styled.input`
-  outline-width: 0;
-  border: none;
-  flex: 1;
-`;
+const UserInfoGroup = styled.div``;
 
 const Header = styled.div`
   display: flex;
   position: sticky;
   top: 0;
-  background-color: white;
   z-index: 1;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  height: 80px;
   border-bottom: 1px solid whitesmoke;
 `;
 
