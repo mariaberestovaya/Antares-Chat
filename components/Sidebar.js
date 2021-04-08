@@ -74,9 +74,17 @@ export default Sidebar;
 const Container = styled.div`
   border-radius: 1px solid whitesmoke;
   min-width: 300px;
-  max-width: 350px;
 
   overflow-y: scroll;
+
+  @media (max-width: 1240px) {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    max-width: 100%;
+  }
 
   ::-webkit-scrollbar {
     display: none;

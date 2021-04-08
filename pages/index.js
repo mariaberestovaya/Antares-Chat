@@ -22,10 +22,18 @@ export default function Home() {
 const Container = styled.div`
   display: grid;
   grid-template-columns: 2fr 10fr;
+
+  @media (max-width: 1240px) {
+    grid-template-columns: 0;
+  }
 `;
 
 const ChatContainer = styled.div`
   display: grid;
   place-items: center;
   height: 100vh;
+
+  @media (max-width: 1240px) {
+    display: none;
+  }
 `;
