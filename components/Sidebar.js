@@ -72,12 +72,9 @@ function Sidebar() {
 export default Sidebar;
 
 const Container = styled.div`
-  flex: 0.45;
   border-radius: 1px solid whitesmoke;
   min-width: 300px;
   max-width: 350px;
-
-  background-color: #efefef;
 
   overflow-y: scroll;
 

@@ -14,7 +14,8 @@ function Chat({ chat, messages }) {
       <Head>
         <title>Chat with {getRecipientEmail(chat.users, user)}</title>
       </Head>
-      <Sidebar style={{}} />
+      <Sidebar />
+
       <ChatContainer>
         <ChatScreen chat={chat} messages={messages} />
       </ChatContainer>

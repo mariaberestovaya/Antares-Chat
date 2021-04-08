@@ -35,7 +35,10 @@ const MessageElement = styled.p`
   text-align: right;
 `;
 
-const Timestamp = styled.div``;
+const Timestamp = styled.div`
+  font-size: 0.7em;
+  
+`;
 
 const Sender = styled(MessageElement)`
   margin-left: auto;
