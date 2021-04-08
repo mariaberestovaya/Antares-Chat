@@ -15,18 +15,24 @@ function Sidebar() {
 
   const [chatsSnapshop] = useCollection(userChatRef);
 
-  const createChat = () => {
+  const createChat = async () => {
     const input = prompt(
       "Please enter an email adress for the user you wish to chat with"
     );
 
     if (!input) return null;
 
-    console.log(EmailValidator.validate(input));
+    const usersRef = db.collection("users");
+    const usersSnapshot = await usersRef.where("email", "==", input).get();
+    if (usersSnapshot.empty) {
+      alert("This user is not registered");
+      return;
+    }
+
     if (
-      EmailValidator.validate(input) &&
       !chatAlreadyExists(input) &&
-      input !== user.email
+      input !== user.email &&
+      EmailValidator.validate(input)
     ) {
       // We need to add the chat into the DB 'chats' collection if it doesnt already exist and is valid
       db.collection("chats").add({
