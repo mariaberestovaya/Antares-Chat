@@ -37,15 +37,15 @@ const MessageElement = styled.p`
 
 const Timestamp = styled.div`
   font-size: 0.7em;
-  
 `;
 
 const Sender = styled(MessageElement)`
   margin-left: auto;
   background-color: #b0b0b0;
+  text-align: left;
 `;
 
 const Reciever = styled(MessageElement)`
   background-color: whitesmoke;
-  text-align: left;
+  text-align: right;
 `;
