@@ -9,6 +9,7 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { IconButton } from "@material-ui/core";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import MicIcon from "@material-ui/icons/Mic";
+import SendIcon from "@material-ui/icons/Send";
 import Message from "../components/Message";
 import { useState } from "react";
 import getRecipientEmail from "../utils/getRecipientEmail";
@@ -113,14 +114,14 @@ function ChatScreen({ chat, messages }) {
             <p>Loadin Last active...</p>
           )}
         </HeaderInformation>
-        <HeaderIcons>
+        {/* <HeaderIcons>
           <IconButton>
             <AttachFileIcon style={{ color: "#000" }} />
           </IconButton>
           <IconButton>
             <MoreVertIcon style={{ color: "#000" }} />
           </IconButton>
-        </HeaderIcons>
+        </HeaderIcons> */}
       </Header>
 
       <MessageContainer>
@@ -130,11 +131,16 @@ function ChatScreen({ chat, messages }) {
 
       <InputContainer>
         <InsertEmoticonIcon />
-        <Input value={input} onChange={(e) => setInput(e.target.value)} />
+        <Input
+          maxLength={200}
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
         <button hidden disabled={!input} type="submit" onClick={sendMessage}>
           Send Message
         </button>
-        <MicIcon />
+        <SendIcon onClick={sendMessage} />
       </InputContainer>
     </Container>
   );

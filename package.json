@@ -10,6 +10,10 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^14.14.41",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
     "better-react-spinkit": "^2.0.4",
     "email-validator": "^2.0.4",
     "firebase": "^8.3.1",
@@ -19,6 +23,7 @@
     "react-dom": "17.0.2",
     "react-firebase-hooks": "^3.0.3",
     "styled-components": "^5.2.3",
-    "timeago-react": "^3.0.2"
+    "timeago-react": "^3.0.2",
+    "typescript": "^4.2.4"
   }
 }
