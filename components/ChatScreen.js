@@ -65,6 +65,8 @@ function ChatScreen({ chat, messages }) {
   const sendMessage = (e) => {
     e.preventDefault();
 
+    if (input.lenght > 200) return null;
+
     db.collection("users").doc(user.uid).set(
       {
         lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
@@ -78,8 +80,6 @@ function ChatScreen({ chat, messages }) {
       user: user.email,
       photoURL: user.photoURL,
     });
-
-    console.log(router.query.id);
 
     setInput("");
     scrollToButtom();
@@ -131,12 +131,7 @@ function ChatScreen({ chat, messages }) {
 
       <InputContainer>
         <InsertEmoticonIcon />
-        <Input
-          maxLength={200}
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
+        <Input value={input} onChange={(e) => setInput(e.target.value)} />
         <button hidden disabled={!input} type="submit" onClick={sendMessage}>
           Send Message
         </button>
