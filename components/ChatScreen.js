@@ -3,12 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import { Avatar } from "@material-ui/core";
 import { auth, db } from "../firebase";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import AttachFileIcon from "@material-ui/icons/AttachFile";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { IconButton } from "@material-ui/core";
-import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-import MicIcon from "@material-ui/icons/Mic";
 import SendIcon from "@material-ui/icons/Send";
 import Message from "../components/Message";
 import { useState } from "react";
@@ -114,14 +109,6 @@ function ChatScreen({ chat, messages }) {
             <p>Loadin Last active...</p>
           )}
         </HeaderInformation>
-        {/* <HeaderIcons>
-          <IconButton>
-            <AttachFileIcon style={{ color: "#000" }} />
-          </IconButton>
-          <IconButton>
-            <MoreVertIcon style={{ color: "#000" }} />
-          </IconButton>
-        </HeaderIcons> */}
       </Header>
 
       <MessageContainer>
@@ -130,7 +117,6 @@ function ChatScreen({ chat, messages }) {
       </MessageContainer>
 
       <InputContainer>
-        <InsertEmoticonIcon />
         <Input value={input} onChange={(e) => setInput(e.target.value)} />
         <button hidden disabled={!input} type="submit" onClick={sendMessage}>
           Send Message
