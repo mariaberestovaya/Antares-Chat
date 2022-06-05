@@ -2,13 +2,13 @@ import firebase from "firebase";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCnbO4TD1rI5mKTpVTejZpL6t1PvlZChN4",
-  authDomain: "antares-chat-e54f5.firebaseapp.com",
-  projectId: "antares-chat-e54f5",
-  storageBucket: "antares-chat-e54f5.appspot.com",
-  messagingSenderId: "232852835020",
-  appId: "1:232852835020:web:a9ecb262cfdc5740ba5069",
-  measurementId: "G-7NKLMD17C9",
+  apiKey: "AIzaSyAW2DbGe-2UGWBjTodtVvDd8yOnlm1Vkkg",
+  authDomain: "fast-drake-332019.firebaseapp.com",
+  projectId: "fast-drake-332019",
+  storageBucket: "fast-drake-332019.appspot.com",
+  messagingSenderId: "337873085464",
+  appId: "1:337873085464:web:b126087df56289550ccf6d",
+  measurementId: "G-G0R8H3MQKB"
 };
 
 const app = !firebase.apps.length
